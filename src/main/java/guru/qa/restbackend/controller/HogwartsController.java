@@ -21,13 +21,13 @@ public class HogwartsController {
     }
 
     @GetMapping("students/all")
-    @ApiOperation("Получение всех учеников")
+    @ApiOperation("Список всех учеников")
     public List<StudentInfo> getAllStudentsInfo() {
         return StudentService.getAll();
     }
 
     @GetMapping("students/house")
-    @ApiOperation("Получение учеников определенного факультета")
+    @ApiOperation("Список учеников определенного факультета")
     public List<StudentInfo> getStudentsByHouse(@RequestParam("housename") HouseInfo houseInfo) {
         return StudentService.getHouseStudentsList(houseInfo);
     }
