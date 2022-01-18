@@ -13,29 +13,31 @@ import java.util.List;
 @RestController
 public class HogwartsController {
 
+    StudentService studentService = new StudentService();
+
     @PostMapping("student")
     @ResponseStatus(HttpStatus.CREATED)
     @ApiOperation("Добавление ученика")
     public StudentInfo addStudent(@RequestBody StudentInfo studentInfo) {
-        return StudentService.addStudent(studentInfo);
+        return studentService.addStudent(studentInfo);
     }
 
     @GetMapping("students/all")
     @ApiOperation("Список всех учеников")
     public List<StudentInfo> getAllStudentsInfo() {
-        return StudentService.getAll();
+        return studentService.getAll();
     }
 
     @GetMapping("students/house")
     @ApiOperation("Список учеников определенного факультета")
     public List<StudentInfo> getStudentsByHouse(@RequestParam("housename") HouseInfo houseInfo) {
-        return StudentService.getHouseStudentsList(houseInfo);
+        return studentService.getHouseStudentsList(houseInfo);
     }
 
     @GetMapping("students/search")
     @ApiOperation("Поиск ученика по имени")
     public List<StudentInfo> searchStudentByName(@RequestParam("name") String name) {
-        return StudentService.searchStudentByName(name);
+        return studentService.searchStudentByName(name);
     }
 
 }

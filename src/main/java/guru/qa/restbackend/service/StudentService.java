@@ -10,19 +10,19 @@ import java.util.List;
 @Service
 public class StudentService {
 
-    public static List<StudentInfo> students = new ArrayList<>();
+    private List<StudentInfo> students = new ArrayList<>();
 
-    public static StudentInfo addStudent(StudentInfo studentInfo) {
+    public StudentInfo addStudent(StudentInfo studentInfo) {
         StudentInfo student = new StudentInfo(studentInfo.getStudentName(), studentInfo.getStudentHouse());
         students.add(student);
         return student;
     }
 
-    public static List<StudentInfo> getAll() {
+    public List<StudentInfo> getAll() {
         return students;
     }
 
-    public static List<StudentInfo> searchStudentByName(String name) {
+    public List<StudentInfo> searchStudentByName(String name) {
         List<StudentInfo> result = new ArrayList<>();
         for (StudentInfo student : students) {
             if (student.getStudentName().contains(name)) {
@@ -32,7 +32,7 @@ public class StudentService {
         return result;
     }
 
-    public static List<StudentInfo> getHouseStudentsList(HouseInfo houseInfo) {
+    public List<StudentInfo> getHouseStudentsList(HouseInfo houseInfo) {
         List<StudentInfo> houseList = new ArrayList<>();
         for (StudentInfo student : students) {
             if (student.getStudentHouse().equals(houseInfo.getHouseName())) {
@@ -41,5 +41,4 @@ public class StudentService {
         }
         return houseList;
     }
-
 }
